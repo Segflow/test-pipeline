@@ -1,15 +1,19 @@
 OUTPUT=bin/
 
+
+
 install:
-	mkdir bin/ || true
 	go get github.com/shirou/gopsutil/mem
+	
+build: install
+	mkdir bin/ || true
 	go build -o ${OUTPUT}/service fact.go
 
-start: install
+start: build
 	./${OUTPUT}/service
 
 clean:
 	rm -r bin
 
-test:
+test: install
 	go test -v ./...
