@@ -22,3 +22,7 @@ func factIter(n int) int {
 
 	return a
 }
+
+func fact(n int) int {
+	return factRecursive(n)
+}

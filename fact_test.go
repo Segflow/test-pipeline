@@ -57,3 +57,9 @@ func BenchmarkFactIterative(b *testing.B) {
 		factIter(500)
 	}
 }
+
+func BenchmarkFact(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		fact(500)
+	}
+}

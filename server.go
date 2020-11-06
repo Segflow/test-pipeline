@@ -20,7 +20,7 @@ func main() {
 		s := r.URL.Query().Get("n")
 
 		n, _ := strconv.Atoi(s)
-		res := factRecursive(n)
+		res := fact(n)
 
 		fmt.Fprintf(w, "result: %d", res)
 	})
