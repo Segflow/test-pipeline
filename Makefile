@@ -20,3 +20,6 @@ test: install
 
 benchmark: install
 	go test -run='^$\' -bench=. -benchmem
+
+sleep:
+	sleep 3600
