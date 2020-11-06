@@ -1,8 +1,7 @@
 name: Test fact
 
 on:
-  push:
-    branches: [ master ]
+  push
 
 jobs:
 
@@ -38,5 +37,7 @@ jobs:
     - name: Test
       run: make test
 
-    
+    - name: Benchmark
+      run: make benchmark
 
+  

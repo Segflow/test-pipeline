@@ -17,3 +17,6 @@ clean:
 
 test: install
 	go test -v ./...
+
+benchmark: install
+	go test -run='^$\' -bench=. -benchmem
