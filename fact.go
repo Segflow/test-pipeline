@@ -1,39 +1,28 @@
 package main
 
-import (
-	"fmt"
-	"net/http"
-	"strconv"
-
-	"github.com/shirou/gopsutil/mem"
-)
-
-func fact(n int) int {
+func factRecursive(n int) int {
 	if n < 0 {
 		return -1
 	}
 	if n == 0 {
 		return 1
 	}
-	return n * fact(n-2)
+	return n * factRecursive(n-1)
 }
 
-func main() {
+func factIter(n int) int {
+	if n < 0 {
+		return -1
+	}
 
-	http.HandleFunc("/metrics", func(w http.ResponseWriter, r *http.Request) {
-		m, _ := mem.VirtualMemory()
-		free := fmt.Sprintf("%v", m.Available)
-		w.Write([]byte(free))
-	})
+	a := 1
+	for i := 1; i <= n; i++ {
+		a = a * i
+	}
 
-	http.HandleFunc("/fact", func(w http.ResponseWriter, r *http.Request) {
-		s := r.URL.Query().Get("n")
+	return a
+}
 
-		n, _ := strconv.Atoi(s)
-		res := fact(n)
-
-		fmt.Fprintf(w, "result: %d", res)
-	})
-
-	http.ListenAndServe("0.0.0.0:8888", nil)
+func fact(n int) int {
+	return factIter(n)
 }
