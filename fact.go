@@ -24,5 +24,5 @@ func factIter(n int) int {
 }
 
 func fact(n int) int {
-	return factRecursive(n)
+	return factIter(n)
 }
